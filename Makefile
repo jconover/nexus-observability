@@ -15,7 +15,7 @@ help:
 
 start:
 	@docker network inspect monitoring >/dev/null 2>&1 || docker network create monitoring
-	@docker network inspect ai-stack >/dev/null 2>&1 || docker network create ai-stack
+	@docker network inspect nexus-ai >/dev/null 2>&1 || docker network create nexus-ai
 	docker compose up -d
 	@echo ""
 	@echo "Monitoring stack started:"
@@ -25,7 +25,7 @@ start:
 
 start-gpu:
 	@docker network inspect monitoring >/dev/null 2>&1 || docker network create monitoring
-	@docker network inspect ai-stack >/dev/null 2>&1 || docker network create ai-stack
+	@docker network inspect nexus-ai >/dev/null 2>&1 || docker network create nexus-ai
 	docker compose --profile gpu-monitoring up -d
 
 stop:

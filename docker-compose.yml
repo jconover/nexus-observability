@@ -17,7 +17,7 @@ services:
       - '--web.enable-lifecycle'
     networks:
       - default
-      - ai-stack
+      - nexus-ai
     depends_on:
       - alertmanager
     restart: unless-stopped
@@ -98,5 +98,5 @@ networks:
   default:
     name: monitoring
     external: true
-  ai-stack:
+  nexus-ai:
     external: true

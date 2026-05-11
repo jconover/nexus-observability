@@ -22,7 +22,7 @@ Prometheus is attached to two Docker networks:
 | Network | Purpose |
 |---|---|
 | `monitoring` | Default network for this stack (prometheus, grafana, alertmanager talk to each other) |
-| `ai-stack` | Shared external network with `nexus-cortex`; lets prometheus scrape `rag-backend:8000` |
+| `nexus-ai` | Shared external network with `nexus-cortex`; lets prometheus scrape `rag-backend:8000` |
 
 Both networks are external (declared with `external: true`). The `make start` target auto-creates them on first run.
 
@@ -31,7 +31,7 @@ Both networks are external (declared with `external: true`). The `make start` ta
 For services in another stack:
 
 1. Ensure the target is on a network prometheus can reach. Either:
-   - Put it on `ai-stack` (already attached)
+   - Put it on `nexus-ai` (already attached)
    - Add a new external network and join prometheus to it in `docker-compose.yml`
 2. Add a scrape job in `monitoring/prometheus/prometheus.yml` using the **container name** (not service name — container names resolve across networks, service names don't).
 3. Reload prometheus: `curl -X POST http://localhost:9090/-/reload`

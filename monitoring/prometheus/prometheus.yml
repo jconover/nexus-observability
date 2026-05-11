@@ -18,7 +18,7 @@ scrape_configs:
     static_configs:
       - targets: ['localhost:9090']
 
-  # Scrape rag-backend over the shared ai-stack network.
+  # Scrape rag-backend over the shared nexus-ai network.
   # Using container_name (rag-backend) rather than service name (backend) because
   # service names are only DNS-resolvable on the owning project's default network;
   # container names are resolvable on any attached network.
